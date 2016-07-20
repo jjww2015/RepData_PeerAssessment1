@@ -160,6 +160,8 @@ text(median(totalStepPerDay),0, &quot;median&quot;, col = &quot;blue&quot;, adj 
 <pre><code>## [1] &quot;The data mean is 9354.2295&quot;</code></pre>
 <pre class="r"><code>sprintf(&quot;The data median is %8.4f&quot;, median(totalStepPerDay))</code></pre>
 <pre><code>## [1] &quot;The data median is 10395.0000&quot;</code></pre>
+<p>The data mean is 9354.23.</p>
+<p>The data median is 10395.</p>
 </div>
 <div id="what-is-the-average-daily-activity-pattern" class="section level2">
 <h2>What is the average daily activity pattern?</h2>
@@ -178,6 +180,7 @@ text(as.numeric(names(maxpt)), aveStepPerInterval[[maxpt[[1]]]], &quot;Peak&quot
 </ul>
 <pre class="r"><code>sprintf(&quot;The %s interval contains %8.4f, the maximum number of steps&quot;, names(maxpt), aveStepPerInterval[[maxpt[[1]]]])</code></pre>
 <pre><code>## [1] &quot;The 835 interval contains 206.1698, the maximum number of steps&quot;</code></pre>
+<p>The 835 interval contains 206.1698, the maximum number of steps.</p>
 </div>
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
@@ -187,9 +190,13 @@ text(as.numeric(names(maxpt)), aveStepPerInterval[[maxpt[[1]]]], &quot;Peak&quot
 <pre class="r"><code>missingIdx &lt;- is.na(activity$steps)
 sprintf(&quot;In total, %d of rows have missing value in steps&quot;, sum(missingIdx))</code></pre>
 <pre><code>## [1] &quot;In total, 2304 of rows have missing value in steps&quot;</code></pre>
+<p>In total, 2304 of rows have missing value in steps.</p>
 <ul>
-<li><p>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</p></li>
-<li><p>Create a new dataset that is equal to the original dataset but with the missing data filled in.</p></li>
+<li>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</li>
+</ul>
+<p>I fill the missing values using the mean for that 5-minute interval (see code below).</p>
+<ul>
+<li>Create a new dataset that is equal to the original dataset but with the missing data filled in.</li>
 </ul>
 <pre class="r"><code>newdata &lt;- activity
 newdata$steps[missingIdx] &lt;- unname(aveStepPerInterval[as.character(newdata[missingIdx,3])])</code></pre>
@@ -208,6 +215,8 @@ text(median(newTotalStepPerDay),0, &quot;median&quot;, col = &quot;blue&quot;, a
 <pre><code>## [1] &quot;The new data mean is 10766.1887&quot;</code></pre>
 <pre class="r"><code>sprintf(&quot;The new data median is %8.4f&quot;, median(newTotalStepPerDay))</code></pre>
 <pre><code>## [1] &quot;The new data median is 10766.1887&quot;</code></pre>
+<p>The new data mean is 10766.19.</p>
+<p>The new data median is 10766.19.</p>
 <ul>
 <li><p>Do these values differ from the estimates from the first part of the assignment?</p>
 <pre><code>Yes.</code></pre></li>

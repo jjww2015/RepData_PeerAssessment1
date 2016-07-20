@@ -69,6 +69,9 @@ sprintf("The data median is %8.4f", median(totalStepPerDay))
 ```
 ## [1] "The data median is 10395.0000"
 ```
+The data mean is 9354.23.
+
+The data median is 10395.
 
 ## What is the average daily activity pattern?
 * Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) 
@@ -97,6 +100,8 @@ sprintf("The %s interval contains %8.4f, the maximum number of steps", names(max
 ```
 ## [1] "The 835 interval contains 206.1698, the maximum number of steps"
 ```
+The 835 interval contains 206.1698, the maximum number of steps.
+
 
 ## Imputing missing values
 * Calculate and report the total number of missing values in the dataset 
@@ -111,9 +116,13 @@ sprintf("In total, %d of rows have missing value in steps", sum(missingIdx))
 ```
 ## [1] "In total, 2304 of rows have missing value in steps"
 ```
+In total, 2304 of rows have missing value in steps.
+
 * Devise a strategy for filling in all of the missing values in the dataset. The
 strategy does not need to be sophisticated. For example, you could use
 the mean/median for that day, or the mean for that 5-minute interval, etc.
+
+I fill the missing values using the mean for that 5-minute interval (see code below).
 
 * Create a new dataset that is equal to the original dataset but with the
 missing data filled in.
@@ -155,6 +164,9 @@ sprintf("The new data median is %8.4f", median(newTotalStepPerDay))
 ```
 ## [1] "The new data median is 10766.1887"
 ```
+The new data mean is 10766.19.
+
+The new data median is 10766.19.
 
 * Do these values differ from the estimates from the first part of the assignment?
 ```

@@ -35,6 +35,9 @@ text(median(totalStepPerDay),0, "median", col = "blue", adj = c(0.,-0.3))
 sprintf("The data mean is %8.4f", mean(totalStepPerDay))
 sprintf("The data median is %8.4f", median(totalStepPerDay))
 ```
+The data mean is `r format(mean(totalStepPerDay))`.
+
+The data median is `r format(median(totalStepPerDay))`.
 
 ## What is the average daily activity pattern?
 * Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) 
@@ -55,6 +58,8 @@ contains the maximum number of steps?
 ```{r report maximum step}
 sprintf("The %s interval contains %8.4f, the maximum number of steps", names(maxpt), aveStepPerInterval[[maxpt[[1]]]])
 ```
+The `r names(maxpt)` interval contains `r format(aveStepPerInterval[[maxpt[[1]]]])`, the maximum number of steps.
+
 
 ## Imputing missing values
 * Calculate and report the total number of missing values in the dataset 
@@ -64,9 +69,13 @@ sprintf("The %s interval contains %8.4f, the maximum number of steps", names(max
 missingIdx <- is.na(activity$steps)
 sprintf("In total, %d of rows have missing value in steps", sum(missingIdx))
 ```
+In total, `r sum(missingIdx)` of rows have missing value in steps.
+
 * Devise a strategy for filling in all of the missing values in the dataset. The
 strategy does not need to be sophisticated. For example, you could use
 the mean/median for that day, or the mean for that 5-minute interval, etc.
+
+I fill the missing values using the mean for that 5-minute interval (see code below).
 
 * Create a new dataset that is equal to the original dataset but with the
 missing data filled in.
@@ -90,6 +99,9 @@ text(median(newTotalStepPerDay),0, "median", col = "blue", adj = c(0.,-0.3))
 sprintf("The new data mean is %8.4f", mean(newTotalStepPerDay))
 sprintf("The new data median is %8.4f", median(newTotalStepPerDay))
 ```
+The new data mean is `r format(mean(newTotalStepPerDay))`.
+
+The new data median is `r format(median(newTotalStepPerDay))`.
 
 * Do these values differ from the estimates from the first part of the assignment?
 ```
